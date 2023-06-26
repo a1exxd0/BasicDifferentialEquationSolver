@@ -15,7 +15,7 @@ Maximum simplification
 Algebraic lettering remains as that and can ONLY be lower case, else throw error. Single letter for each algebraic term.
 
 Structure as parent class for expressions and build greater expression holders. Using composition:
-Symbol -> BasicExpression(Including all basic +-*(div)^ operations. Use brackets)
+Symbol -> SymbolCoefficient-> BasicExpression(Including all basic +-*(div)^ operations. Use brackets)
 
 
 */
@@ -26,7 +26,7 @@ Symbol -> BasicExpression(Including all basic +-*(div)^ operations. Use brackets
 
 namespace Algebra {
 	/// <summary>
-	/// Single item algebraic term only (no integer)
+	/// Single item algebraic term only (no integer coefficient)
 	/// </summary>
 	class Symbols {
 	private:
@@ -36,7 +36,11 @@ namespace Algebra {
 		Symbols();
 
 
-		// set from user input
+		/// <summary>
+		/// Set symbol from user input
+		/// </summary>
+		/// <param name="s">input param</param>
+		/// <returns>true for a successful set, false otherwise</returns>
 		bool SetSymbol(std::string s);
 
 		//manual override set for char input
@@ -45,9 +49,33 @@ namespace Algebra {
 		char GetSymbol();
 
 	};
-	
-	
+	class Fractions {
+	private:
+		int numerator;
+		int denominator;
+		int GCD(int a, int b);
+	public:
+		Fractions();
+		void SetNumerator(int i);
+		bool SetDenominator(int i);
+		void Simplify();
+	};
+	class SymbolCoefficient {
+	private:
+		Fractions coefficient;
+		Symbols symbol;
+	public:
+		inline void SetFraction(Fractions f) {
+			coefficient = f;
+		}
+		inline void SetSymbol(Symbols s) {
+			symbol = s;
+		}
+	};
 
+	/// <summary>
+	/// 
+	/// </summary>
 	class BasicExpression {
 	private:
 

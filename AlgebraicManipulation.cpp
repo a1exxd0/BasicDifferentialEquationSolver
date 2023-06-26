@@ -25,6 +25,7 @@ Algebraic lettering remains as that and can ONLY be lower case, else throw error
 
 
 using namespace Algebra;
+#pragma region Symbols
 Symbols::Symbols() {
 	symbol = '.';
 	usable = false;
@@ -49,4 +50,45 @@ void Symbols::SetSymbol(char c) {
 char Symbols::GetSymbol() {
 	return symbol;
 }
+#pragma endregion
+
+#pragma region Fractions
+Fractions::Fractions() {
+	numerator = 1;
+	denominator = 1;
+}
+
+int Fractions::GCD(int a, int b) {
+	if (b == 0) {
+		return a;
+	}
+	else {
+		return GCD(b, a % b);
+	}
+}
+
+void Fractions::Simplify() {
+	int gcd = GCD(numerator, denominator);
+	numerator = numerator / gcd;
+	denominator = denominator / gcd;
+}
+
+void Fractions::SetNumerator(int i) {
+	numerator = i;
+	Simplify();
+}
+
+bool Fractions::SetDenominator(int i) {
+	if (i == 0) {
+		return false;
+	}
+	else {
+		denominator = i;
+		Simplify();
+		return true;
+	}
+}
+#pragma endregion
+
+
 
