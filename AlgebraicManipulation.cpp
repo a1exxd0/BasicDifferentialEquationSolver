@@ -30,15 +30,23 @@ Symbols::Symbols() {
 	usable = false;
 }
 bool Symbols::SetSymbol(std::string s) {
-	if (s.length() != 1) {
+	if (s.length() != 2) { //if the string isnt single length
 		return false;
 	}
 	else {
-		symbol = s[0];
+		char temp = s[0];
+		if (isupper(temp)) {
+			return false;
+		}
+		symbol = temp;
 		usable = true;
 		return true;
 	}
 }
+void Symbols::SetSymbol(char c) {
+	symbol = c; 
+}
 char Symbols::GetSymbol() {
 	return symbol;
 }
+

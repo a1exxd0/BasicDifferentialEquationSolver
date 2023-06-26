@@ -25,22 +25,34 @@ Symbol -> BasicExpression(Including all basic +-*(div)^ operations. Use brackets
 #define ALGEBRAICMANIPULATION_H
 
 namespace Algebra {
+	/// <summary>
+	/// Single item algebraic term only (no integer)
+	/// </summary>
 	class Symbols {
 	private:
 		char symbol;
 		bool usable;
 	public:
 		Symbols();
-		bool SetSymbol(std::string s);
-		char GetSymbol();
-	};
 
+
+		// set from user input
+		bool SetSymbol(std::string s);
+
+		//manual override set for char input
+		void SetSymbol(char c);
+
+		char GetSymbol();
+
+	};
+	
+	
 
 	class BasicExpression {
 	private:
 
 	public:
-
+		
 	};
 }
 
