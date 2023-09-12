@@ -49,7 +49,7 @@ namespace Algebra {
 		char GetSymbol();
 
 	};
-	class Fractions {
+	class Fractions { //numerical only
 	private:
 		int numerator;
 		int denominator;
@@ -60,11 +60,19 @@ namespace Algebra {
 		bool SetDenominator(int i);
 		void Simplify();
 	};
+	/// <summary>
+	/// Inline as functions are trivial
+	/// Only supports non-component symbols and coefficients
+	/// </summary>
 	class SymbolCoefficient {
 	private:
 		Fractions coefficient;
 		Symbols symbol;
 	public:
+		inline SymbolCoefficient() { 
+			coefficient = Fractions(); 
+			symbol = Symbols(); 
+		};
 		inline void SetFraction(Fractions f) {
 			coefficient = f;
 		}
@@ -74,13 +82,18 @@ namespace Algebra {
 	};
 
 	/// <summary>
-	/// 
+	/// List of operands and symbol coefficients (single line)
 	/// </summary>
 	class BasicExpression {
 	private:
 
 	public:
 		
+	};
+
+	class BasicExpressionTree {
+	private:
+	public:
 	};
 }
 

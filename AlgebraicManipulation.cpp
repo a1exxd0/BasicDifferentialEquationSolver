@@ -90,5 +90,12 @@ bool Fractions::SetDenominator(int i) {
 }
 #pragma endregion
 
+#pragma region BasicExpression
+
+#pragma endregion
+
+#pragma region BasicExpressionTree
+
+#pragma endregion
 
 
